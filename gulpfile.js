@@ -45,6 +45,13 @@ gulp.task('devJs',function(){
     return gulp.src('./src/js/*.js')
     .pipe(concat('all.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./build/js'))
+    .pipe(gulp.dest('./src/js/minJs'))
 })
 
+//监听
+gulp.task('watch',function(){
+    gulp.watch('./src/scss/*.scss',gulp.series('devCss'))
+    gulp.watch('./src/js/*.js',gulp.series('devJs'))
+})
+
+gulp.task('default',gulp.series('devCss','devJs','server','watch'))
