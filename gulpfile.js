@@ -31,6 +31,7 @@ gulp.task('server',function(){
     // })
 })
 
+//开发环境css
 gulp.task('devCss',function(){
     return gulp.src('./src/scss/*.scss')
     .pipe(sass())
@@ -38,3 +39,12 @@ gulp.task('devCss',function(){
     .pipe(minCss())
     .pipe(gulp.dest('./src/css'))
 })
+
+//js
+gulp.task('devJs',function(){
+    return gulp.src('./src/js/*.js')
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/js'))
+})
+
